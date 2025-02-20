@@ -11,18 +11,25 @@ Original Credit for this app goes to: Shrinkhal01/CHATBOT-LLama-2
    python -m venv venv
    source venv/bin/activate
    pip install -r requirements.txt
+   ```
 2. **Ollama**
    ```bash
    sudo apt-get install ollama
    ollama serve
    ollama pull <desired_model_to_use:model_tag>
+   ```
 3. **Update app.py with model choice**
    ```python
    llm_model = '<desired_model_to_use:model_tag>'
+   ```
 4. **Run:**
    ```bash
    flask run
-  
+   ```
+   or 
+   ``` bash
+   gunicorn -w 4 'app:app'
+   ```
 License
 This project is licensed under the MIT License. See the LICENSE file for details.
  
