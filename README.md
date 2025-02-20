@@ -1,6 +1,6 @@
 # LLM Chat
 
-Converse with a Ollama model via a very simple Flask web app.
+Converse with an Ollama model via a very simple Flask web app.
 
 Original Credit for this app goes to: Shrinkhal01/CHATBOT-LLama-2
   
@@ -8,7 +8,7 @@ Original Credit for this app goes to: Shrinkhal01/CHATBOT-LLama-2
 
 1. **Configure and Install App Requirements:**
    ```bash 
-   python install -m venv venv
+   python -m venv venv
    source venv/bin/activate
    pip install -r requirements.txt
 2. **Ollama**
