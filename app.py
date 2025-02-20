@@ -77,11 +77,13 @@ class OllamaChatbot:
             return "Error: Failed to generate response."
     #the chat function is used to handle the chat functionality of the chatbot, including user input, generating responses, and saving chat history
 
+# Model info
+model_name = "artifish/llama3.2-uncensored:latest"
 
 @app.route('/')
 def index():
     base_url = "http://localhost:11434"
-    model = "llama2-uncensored:7b"
+    model = model_name
     chatbot = OllamaChatbot(base_url, model)
     chat_history = chatbot.chat_history
     return render_template('index.html', chat_history=chat_history)
@@ -91,7 +93,7 @@ def index():
 def handle_chat():
     user_input = request.form['user_input']
     base_url = "http://localhost:11434"
-    model = "llama2-uncensored:7b"
+    model = model_name
     chatbot = OllamaChatbot(base_url, model)
     response = chatbot.chat(user_input)
     return jsonify({'response': response})
