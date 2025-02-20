@@ -1,6 +1,6 @@
-# Ollama Chatbot
+# LLM Chat
 
-The Ollama Chatbot is an AI-powered web application that facilitates real-time interaction with users. This chatbot is built with Flask for the backend and HTML, CSS, and jQuery for a responsive and user-friendly interface. It supports instant messaging, chat history, and can be customized with additional data to answer specific questions, making it ideal for various applications, including educational support. 
+Converse with a Ollama model via Flask web app.
 
 Original Credit for this app goes to: Shrinkhal01/CHATBOT-LLama-2
 
@@ -30,33 +30,7 @@ Original Credit for this app goes to: Shrinkhal01/CHATBOT-LLama-2
 4. **Run:**
    ```bash
    flask run
-bash
--Copy code
--pip install flask requests
--ollama pull <desired_model>
--ollama serve
--You can download the pre-trained Ollama Llama 2 model from the Ollama GitHub repository.
-
--Run the application:
-
--bash
--Copy code
--python app.py
--Open your web browser:
-
--Navigate to http://localhost:5000 to start using the chatbot.
-
--File Structure
--app.py: Backend Flask application handling bot interactions.
--templates/index.html: Frontend HTML providing the chat interface.
--static/:
--artificial-intelligence.png: Bot avatar image.
--user.jpg: User avatar image.
--chat_history.json: Stores chat history for persistent conversations.
--Usage
--Sending Messages:
--Type your message in the input field and press Enter or click Send to send it.
- 
+  
 License
 This project is licensed under the MIT License. See the LICENSE file for details.
  
