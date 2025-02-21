@@ -28,7 +28,7 @@ Original Credit for this app goes to: Shrinkhal01/CHATBOT-LLama-2
    ```
    or 
    ``` bash
-   gunicorn -w 4 'app:app'
+   gunicorn -w 4 -b 0.0.0.0:1337 'app:app'
    ```
 License
 This project is licensed under the MIT License. See the LICENSE file for details.
