@@ -1,0 +1,4 @@
+llm: llama3.2:3b
+history: False
+vector_db_path: "./chroma"
+inputs_path: "./data"

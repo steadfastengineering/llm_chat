@@ -1,29 +1,32 @@
-from flask import Flask, render_template, request, jsonify #these libraries are used to create the web application
-import requests #this is used to send requests to the llama server
-import json #this is used to parse the response from the llama server
-import os #os is used to check for filesystem permissions location
+from flask import Flask, render_template, request, jsonify # These libraries are used to create the web application
+import requests  
+import json  
 
+import os  
+import yaml  
 
-app = Flask(__name__)
-#this is used to create the web application :)
+with open("config.yaml", "r") as file:
+    config = yaml.safe_load(file)
+
+app = Flask(__name__) # Create the web application :)
+model_name = config.get('llm', {})
+history = config.get('history', {}) 
 
 class OllamaChatbot:
+    #the init function is used to initialize the chatbot with the base url, model, chat history, system prompt, and keep alive time
     def __init__(self, base_url, model):
         self.base_url = base_url
         self.model = model
         self.chat_history = self.load_chat_history()
         self.system_prompt = ""
         self.keep_alive = "10m"
-    #the init function is used to initialize the chatbot with the base url, model, chat history, system prompt, and keep alive time
-
-
+     
     def load_chat_history(self):
-        if os.path.exists("chat_history.json"):
-            with open("chat_history.json", "r") as file:
-                return json.load(file)
-        return []
-    #the load_chat_history function is used to load the chat history from the chat_history.json file
-
+        if history == True:
+            if os.path.exists("chat_history.json"):
+                with open("chat_history.json", "r") as file:
+                    return json.load(file)
+        return [] 
 
     def save_chat_history(self):
         with open("chat_history.json", "w") as file:
@@ -77,14 +80,11 @@ class OllamaChatbot:
             return "Error: Failed to generate response."
     #the chat function is used to handle the chat functionality of the chatbot, including user input, generating responses, and saving chat history
 
-# Model info
-model_name = "artifish/llama3.2-uncensored:latest"
-
+ 
 @app.route('/')
 def index():
-    base_url = "http://localhost:11434"
-    model = model_name
-    chatbot = OllamaChatbot(base_url, model)
+    base_url = "http://localhost:11434" 
+    chatbot = OllamaChatbot(base_url, model_name)
     chat_history = chatbot.chat_history
     return render_template('index.html', chat_history=chat_history)
 #the index method is used to render the index.html file and display the chat history
@@ -92,9 +92,8 @@ def index():
 @app.route('/chat', methods=['POST'])
 def handle_chat():
     user_input = request.form['user_input']
-    base_url = "http://localhost:11434"
-    model = model_name
-    chatbot = OllamaChatbot(base_url, model)
+    base_url = "http://localhost:11434" 
+    chatbot = OllamaChatbot(base_url, model_name)
     response = chatbot.chat(user_input)
     return jsonify({'response': response})
 #the handle_chat method is used to handle the chat functionality of the chatbot, including user input and generating responses
