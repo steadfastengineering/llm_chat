@@ -4,6 +4,9 @@ chat_history.json
 # Ignore Python virtual environment
 venv/
 
+# Ignore Vector store input materials
+data/
+
 # Ignore Python cache files
 __pycache__/
 *.py[cod]
