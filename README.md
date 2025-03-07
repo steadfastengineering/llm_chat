@@ -18,11 +18,14 @@ Original Credit for this app goes to: Shrinkhal01/CHATBOT-LLama-2
    ollama serve
    ollama pull <desired_model_to_use:model_tag>
    ```
-3. **Update app.py with model choice**
-   ```python
-   llm_model = '<desired_model_to_use:model_tag>'
+3. **Update config.yaml as needed**
+   ```JSON
+   ...
+   llm: llama3.2:1b
+   embedding_model: "all-MiniLM-L6-v2"
+   ...
    ```
-4. **Run:**
+5. **Run:**
    ```bash
    flask run
    ```
@@ -30,6 +33,5 @@ Original Credit for this app goes to: Shrinkhal01/CHATBOT-LLama-2
    ``` bash
    gunicorn -w 4 -b 0.0.0.0:1337 'app:app'
    ```
-License
-This project is licensed under the MIT License. See the LICENSE file for details.
- 
+
+This project is licensed under the MIT License. 
